@@ -1,4 +1,4 @@
-export default function TablaParticipantes(){
+export default function TablaDeParticipantesAdministrador(){
     return(
         <table border="solid">
             <tr>
