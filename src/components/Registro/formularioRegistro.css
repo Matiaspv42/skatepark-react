@@ -1,0 +1,27 @@
+/* *{
+    border: 1px red solid;
+} */
+
+.RegisterForm{
+    /* display: flex;
+    flex-direction: column; */
+    /* border: 1px red solid; */
+    width: 450px;
+}
+
+/* .ProfileForm div{
+    width: 50%;
+    display: flex;
+} */
+
+.inputRegisterForm{
+    display: flex;
+    justify-content: space-between;
+    margin: 6.5px 0;
+}
+
+.buttonRegisterForm{
+    display: flex;
+    justify-content: center;
+}
+

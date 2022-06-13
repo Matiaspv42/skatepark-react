@@ -1,0 +1,22 @@
+.LoginForm{
+    /* display: flex;
+    flex-direction: column; */
+    /* border: 1px red solid; */
+    width: 250px;
+}
+
+/* .ProfileForm div{
+    width: 50%;
+    display: flex;
+} */
+
+.inputLoginForm{
+    display: flex;
+    justify-content: space-between;
+    margin: 6.5px 0;
+}
+
+.buttonLoginForm{
+    display: flex;
+    justify-content: center;
+}

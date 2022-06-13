@@ -1,16 +1,14 @@
+import './formularioLogin.css'
 export default function FormularioLogin(){
     return(
-        <div>
-            <div>
+        <div className="LoginForm">
+            <div className="inputLoginForm">
                 <label>Email:</label>
                 <input/>
             </div>
-            <div>
+            <div className="inputLoginForm">
                 <label>Contraseña:</label>
                 <input/>
-            </div>
-            <div>
-                <button>Enviar</button>
             </div>
         </div>
     )

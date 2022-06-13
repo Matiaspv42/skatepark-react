@@ -1,0 +1,23 @@
+/* *{
+    border: 1px red solid;
+} */
+
+.ProfileForm{
+    /* display: flex;
+    flex-direction: column; */
+    /* border: 1px red solid; */
+    width: 350px;
+}
+
+
+.inputProfileForm{
+    display: flex;
+    justify-content: space-between;
+    margin: 6.5px 0;
+}
+
+.buttonProfileForm{
+    display: flex;
+    justify-content: center;
+}
+

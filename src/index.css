@@ -1,13 +1,30 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body{
+  background-color: #101822;
+  color: #f4921e;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.App{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.App a{
+  text-decoration: none;
+  color: #f4921e;
+}
+
+button{
+  margin: 8px 6px;
+  background-color: #101822;
+  color:#f4921e;
+  border: 1px solid #f4921e;;
+  border-radius: 7.5px;
+  padding: 7.5px;
+  cursor: pointer;
+}
+
+.Delete{
+  color: #dd115a;
+  border: 1px solid #dd115a;
 }
