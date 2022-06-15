@@ -1,0 +1,8 @@
+.redirectLink{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.redirectLink:hover{
+    color: #8C5615;
+}
