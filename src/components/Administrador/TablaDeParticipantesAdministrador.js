@@ -1,17 +1,35 @@
 import axios from "axios"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
+import AuthContext from "../../AuthContext"
+
 export default function TablaParticipantes(){
+    const {token,setToken} = useContext(AuthContext)
+
     const [skaters, SetSkaters] = useState([])
     const getSkaters = async () => {
-        console.log('buscando skaters')
-        const data = await axios.get("http://localhost:3001/skaters")
-        SetSkaters([...data.data])
-    }
-  
-    
+       try{
+        const data = await axios.get("http://localhost:3001/skaters",{
+            headers:{
+                'Authorization': localStorage.getItem('token')
+                },
+            })
+            SetSkaters([...data.data])
+        }catch(error){
+           alert('Hay un error: '+ error.response.data.error + '. Intente iniciar sesión nuevamente')
+        }
+        
+    }  
     useEffect( () => { 
         getSkaters()
     },[])
+
+    const aprobarSkater = async () =>{
+        try {
+            const data = await axios.put('http://localhost:3001/aprobarSkater')
+        } catch (error) {
+            
+        }
+    }
 
     return(
         <table border="solid">

@@ -1,6 +1,11 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
 export default function TablaParticipantes(){
+
+    let aprobadoStyle = {
+        color: "#198754"
+        };
+
     const [skaters, SetSkaters] = useState([])
     const getSkaters = async () => {
         const data = await axios.get("http://localhost:3001/skaters")
@@ -30,7 +35,9 @@ export default function TablaParticipantes(){
                     <th>{skater.nombre}</th>
                     <th>{skater.anos_experiencia}</th>
                     <th>{skater.especialidad}</th>
-                    <th>{(skater.estado === true)? 'true':'false'}</th>
+                    <th
+                    style={(skater.estado === true)? aprobadoStyle : undefined}
+                    >{(skater.estado === true)? 'Aprobado':'En revisión'}</th>
                 </tr>)}
             </tbody>
         </table>

@@ -5,21 +5,25 @@ export default function FormularioDatosDePerfil(){
     const updateSkater = async () => {
         try {
           if(skater.password === skater.passVerify){
-            const res = await axios.put("http://localhost:3001/skaters", skater)
+            const res = await axios.put("http://localhost:3001/skaters",skater, {   
+                headers:{
+                    'Authorization': localStorage.getItem('token')
+                    }
+            })
             console.log(res)
             alert('Datos de skater actualizados')}
             else{
                 alert('Las contraseñas no coinciden, por favor intentalo nuevamente')
             }
         } catch (error) {
-            alert('algo salió mal :(')
+            alert('algo salió mal :(. Prueba iniciando sesión nuevamente')
             console.log(error)
         }
     }
 
     const deleteSkater = async () => {
         try {
-            
+
             if(skater.password === skater.passVerify){
             const url = `http://localhost:3001/skaters/${skater.email}`
             console.log(url)

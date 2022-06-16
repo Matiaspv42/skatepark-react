@@ -16,23 +16,18 @@ export default function App() {
     setTimeout(() => resolve('2342f2f1d131rf12'), 250);
   });
   const [token, setToken] = useState('123');
- 
-  const handleLogin = async () => {
-    // const token = await fakeAuth();
-    const token = 132
-    setToken(token);
-  };
+  const [login, setLogin] = useState(false)
   return (
     <div className='App'>
-      <AuthContext.Provider value={{token, handleLogin}}>
+      <AuthContext.Provider value={{token, setToken, login, setLogin}}>
       <BrowserRouter>
         <Navbar/>
           <Routes>
               <Route path='/' element={<Home/>} />
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Registro/>} />
-              <Route path='/admin' element={<Administrador/>} />
-              <Route path='/profile' element={<DatosPerfil/>} />
+              {login && <Route path='/admin' element={<Administrador/>} />}
+              {login && <Route path='/profile' element={<DatosPerfil/>} />}
           </Routes>
       </BrowserRouter>
     </AuthContext.Provider>
