@@ -31,7 +31,7 @@ export default function TablaParticipantes(){
                 {skaters.map(skater => 
                 <tr>
                     <th>{skater.id}</th>
-                    <th>{skater.email}</th>
+                    <th><img src={skater.foto} alt="" width="100px"/></th>
                     <th>{skater.nombre}</th>
                     <th>{skater.anos_experiencia}</th>
                     <th>{skater.especialidad}</th>

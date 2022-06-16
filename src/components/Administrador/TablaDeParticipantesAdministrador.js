@@ -22,7 +22,7 @@ export default function TablaParticipantes(){
     useEffect( () => { 
         getSkaters()
     },[])
-
+    console.log(skaters)
     const aprobarSkater = async () =>{
         try {
             const data = await axios.put('http://localhost:3001/aprobarSkater')
@@ -51,7 +51,7 @@ export default function TablaParticipantes(){
                     <th>{skater.nombre}</th>
                     <th>{skater.anos_experiencia}</th>
                     <th>{skater.especialidad}</th>
-                    <th><input type="checkbox" checked={(skater.estado === true)? 'checked':'unchecked'} onChange={e => console.log(e)}></input></th>
+                    <th><input type="checkbox" checked={skater.estado} onChange={e => console.log(e)}></input></th>
                 </tr>)}
             </tbody>
         </table>

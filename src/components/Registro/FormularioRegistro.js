@@ -1,13 +1,36 @@
 import axios from 'axios'
 import { useState } from 'react'
 import './formularioRegistro.css'
+import storage from '../../firebase/config'
+import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
+            
+
+
 export default function FormularioRegistro(){
     const registerSkater = async () => {
         try {
           if(skater.password === skater.passVerify){
-            const res = await axios.post("http://localhost:3001/skaters", skater)
-            console.log(res)
-            alert('skater agregado')}
+            const spaceRef = ref(storage, `images/${image.name}`)
+            const uploadTask = uploadBytesResumable(spaceRef, image)
+            uploadTask.on(
+                'state_changed',
+                (snapshot)=>console.log('archivo subido!'),
+                (error)=> console.log(error),
+                ()=>{
+                    // get URL
+                    getDownloadURL(uploadTask.snapshot.ref).then(
+                        (url)=>{
+                            skater.foto = url
+                            axios.post("http://localhost:3001/skaters", skater)
+                                .then((res)=>{
+                                    console.log(res)
+                                    alert('Skater agregado!')
+                                })
+                        }
+                    )
+                }
+            )
+        }
             else{
                 alert('Las contraseñas no coinciden, por favor intentalo nuevamente')
             }
@@ -23,6 +46,11 @@ export default function FormularioRegistro(){
         skater[property] = value;
         SetSkater({...skater})
     }
+    const [image, setImage] = useState({})
+    const handleFile = ({target}) => {
+        setImage(target.files[0])
+    }
+
 
     return(
         <div className="RegisterForm">
@@ -52,7 +80,7 @@ export default function FormularioRegistro(){
             </div>
             <div className='inputRegisterForm'>
                 <label>Foto de perfil:</label>
-                <input type="file" name='foto' value={skater.foto} onChange={handleSkater}/>
+                <input type="file" name='foto' value={skater.foto} onChange={handleFile}/>
             </div>
             <div className='buttonRegisterForm'>
                 <button onClick={registerSkater}>Registrarse</button>
