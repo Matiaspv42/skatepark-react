@@ -16,6 +16,7 @@ export default function FormularioRegistro(){
                 'state_changed',
                 (snapshot)=>console.log('archivo subido!'),
                 (error)=> console.log(error),
+                // se le puede agregar acá un async para arreglarlo
                 ()=>{
                     // get URL
                     getDownloadURL(uploadTask.snapshot.ref).then(
