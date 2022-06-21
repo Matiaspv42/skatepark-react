@@ -22,10 +22,19 @@ export default function TablaParticipantes(){
     useEffect( () => { 
         getSkaters()
     },[])
-    console.log(skaters)
-    const aprobarSkater = async () =>{
+    const updateStateSkater = async (id) =>{
         try {
-            const data = await axios.put('http://localhost:3001/aprobarSkater')
+            const data = await axios.put('http://localhost:3001/aprobarSkater',[id],{   
+                headers:{
+                    'Authorization': localStorage.getItem('token')
+                    }
+                })
+            const skaters = await axios.get("http://localhost:3001/skaters",{
+                headers:{
+                    'Authorization': localStorage.getItem('token')
+                    },
+                })
+                SetSkaters([...skaters.data])
         } catch (error) {
             
         }
@@ -47,11 +56,11 @@ export default function TablaParticipantes(){
                 {skaters.map(skater => 
                 <tr>
                     <th>{skater.id}</th>
-                    <th>{skater.email}</th>
+                    <th><img src={skater.foto} alt="" width="100px"/></th>
                     <th>{skater.nombre}</th>
                     <th>{skater.anos_experiencia}</th>
                     <th>{skater.especialidad}</th>
-                    <th><input type="checkbox" checked={skater.estado} onChange={e => console.log(e)}></input></th>
+                    <th><input type="checkbox" checked={skater.estado} onChange={e=>updateStateSkater(e.target.id)} id={skater.id}></input></th>
                 </tr>)}
             </tbody>
         </table>
